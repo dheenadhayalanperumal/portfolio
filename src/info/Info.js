@@ -33,11 +33,11 @@ export const info = {
     miniBio: [ // these are just some "tidbits" about yourself. You can look at mine https://paytonjewell.github.io/#/ for an example if you'd like
         {
             emoji: '☕',
-            text: 'fueled by lemon juice'
+            text: 'Fueled by lemonade'
         },
         {
             emoji: '🌎',
-            text: 'based in the India'
+            text: 'Based in the India'
         },
         {
             emoji: "💼",
@@ -123,18 +123,6 @@ export const info = {
             live: "https://nationalpublicschoolmanamadurai.com/",
             source: "https://github.com/dheenadhayalanperumal",
             image: mock3
-        },
-        {
-            title: "Project 4",
-            live: "https://paytonpierce.dev",
-            source: "https://github.com/paytonjewell",
-            image: mock4
-        },
-        {
-            title: "Project 5",
-            live: "https://paytonpierce.dev",
-            source: "https://github.com/paytonjewell",
-            image: mock5
         }
     ]
 }
