@@ -60,7 +60,7 @@ export const info = {
             label: 'instagram'
         },
         {
-            link: "https://github.com?dheenadhayalanperumal",
+            link: "https://github.com/dheenadhayalanperumal",
             icon: "fa fa-github",
             label: 'github'
         },
@@ -81,8 +81,8 @@ export const info = {
     bio: "Hello! I'm Dheenadhayalan. I'm a Frontend Developer for NMW Internet Technologies. I studied CompSci Enginerring at SKCE, I enjoy long walks on the beach, and I believe artificial intelligence will inevitably rule us all one day. You should hire me!",
     skills:
         {
-            proficientWith: ['javascript', 'react', 'git', 'github', 'bootstrap', 'html5', 'css3', 'figma'],
-            exposedTo: ['nodejs', 'python', 'adobe illustrator']
+            proficientWith: ['javascript', 'react', 'git', 'github', 'bootstrap', 'html5', 'css3', 'figma', 'mongoDB','Material-UI'],
+            exposedTo: ['nodejs', 'Redux', 'adobe premiere pro',]
         }
     ,
     hobbies: [
