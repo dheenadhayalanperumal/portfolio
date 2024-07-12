@@ -78,7 +78,7 @@ export const info = {
 // Just change the links so that they lead to your social profiles.
 
     ],
-    bio: "Hello! I'm Dheenadhayalan. I'm a Frontend Developer for NMW Internet Technologies. I studied CompSci Enginerring at SKCE, I enjoy long walks on the beach, and I believe artificial intelligence will inevitably rule us all one day. You should hire me!",
+    bio: "As a skilled React Developer with a strong background in both web and mobile application development, I specialize in creating dynamic and responsive user interfaces using React and React Native. My extensive experience includes building complex single-page applications, implementing state management solutions, and optimizing performance for a seamless user experience.",
     skills:
         {
             proficientWith: ['javascript', 'react', 'DSA','git', 'github', 'bootstrap', 'html5', 'css3', 'figma', 'mongoDB','Material-UI'],
@@ -91,21 +91,27 @@ export const info = {
             emoji: '📖'
         },
         {
-            label: 'theater',
-            emoji: '🎭'
+            label: 'Photogrophy',
+            emoji: '📷'
         },
         {
             label: 'movies',
             emoji: '🎥'
         },
         {
-            label: 'cooking',
-            emoji: '🌶'
+            label: 'Chess',
+            emoji: '♟️'
         }
 // Same as above, change the emojis to match / relate to your hobbies or interests.
 // You can also remove the emojis if you'd like, I just think they look cute :P
     ],
     portfolio: [ // This is where your portfolio projects will be detailed
+        {
+            title: "React Native Chit Fund Collection App",
+            live: "####",
+            source: "###",
+            image: mock4
+        }
         {
             title: "Movie Database",
             live: "https://movies.dheena.live", //this should be a link to the live version of your project, think github pages, netlify, heroku, etc. Or your own domain, if you have it.
@@ -124,5 +130,6 @@ export const info = {
             source: "https://github.com/dheenadhayalanperumal",
             image: mock3
         }
+       
     ]
 }
