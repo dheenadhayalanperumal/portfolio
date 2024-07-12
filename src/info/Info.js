@@ -111,7 +111,7 @@ export const info = {
             live: "####",
             source: "###",
             image: mock4
-        }
+        },
         {
             title: "Movie Database",
             live: "https://movies.dheena.live", //this should be a link to the live version of your project, think github pages, netlify, heroku, etc. Or your own domain, if you have it.
