@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Style from './Navbar.module.scss';
 import Toggler from "./home/Toggler";
-import {Link, useLocation} from "react-router-dom";
-import {Box} from "@mui/material";
-import {info} from "../info/Info";
+import { Link, useLocation } from "react-router-dom";
+import { Box } from "@mui/material";
+import { info } from "../info/Info";
 
 const links = [
     {
@@ -27,30 +27,32 @@ const links = [
         to: '/portfolio',
         active: 'portfolio'
     }
-]
+];
 
-export default function Navbar({darkMode, handleClick}) {
-    const location = useLocation()
+export default function Navbar({ darkMode, handleClick }) {
+    const location = useLocation();
     const [active, setActive] = useState(location.pathname === '/' ? 'home' : location.pathname.slice(1, location.pathname.length));
 
     return (
         <Box component={'nav'} width={'100%'}>
             <Box component={'ul'} display={'flex'} justifyContent={'center'} alignItems={'center'}
-                 gap={{xs: '2rem', md: '8rem'}}
+                 gap={{ xs: '2rem', md: '8rem' }}
                  textTransform={'lowercase'} fontSize={'1rem'}>
                 {links.map((link, index) => (
                     <Box key={index} component={'li'} className={(link.active === active && !link.type) && Style.active}
-                         sx={{borderImageSource: info.gradient}}>
+                         sx={{ borderImageSource: info.gradient }}>
                         <Link to={link.to} onClick={() => setActive(link.active)} className={Style.link}>
-                            {!link.type && <p style={{padding: '0.5rem 0'}}>{link.name}</p>}
-                            {link.type && <h1>{link.name}</h1>}
+                            {!link.type && <p style={{ padding: '0.5rem 0' }}>{link.name}</p>}
+                            {link.type === 'initials' && (
+                                <img src="../img/initials.png" alt={link.name} style={{ height: '40px', padding: '0.5rem 0' }} />
+                            )}
                         </Link>
                     </Box>
                 ))}
                 <li>
-                    <Toggler darkMode={darkMode} handleClick={handleClick}/>
+                    <Toggler darkMode={darkMode} handleClick={handleClick} />
                 </li>
             </Box>
         </Box>
-    )
+    );
 }
