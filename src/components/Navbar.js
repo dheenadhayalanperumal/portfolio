@@ -44,7 +44,7 @@ export default function Navbar({ darkMode, handleClick }) {
                         <Link to={link.to} onClick={() => setActive(link.active)} className={Style.link}>
                             {!link.type && <p style={{ padding: '0.5rem 0' }}>{link.name}</p>}
                             {link.type === 'initials' && (
-                                <img src="../img/initials.png" alt={link.name} style={{ height: '40px', padding: '0.5rem 0' }} />
+                                <img src="/img/initials.png" alt={link.name} style={{ height: '40px', padding: '0.5rem 0' }} />
                             )}
                         </Link>
                     </Box>
