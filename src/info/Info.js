@@ -107,10 +107,16 @@ export const info = {
     ],
     portfolio: [ // This is where your portfolio projects will be detailed
         {
-            title: "React Native Chit Fund Collection App",
+            title: "Chit Fund Collection Andriod App",
             live: "####",
             source: "###",
             image: mock4
+        },
+        {
+            title: "Live Weather Andriod App",
+            live: "https://www.amazon.com/gp/product/B0DBLR4HD7",
+            source: "https://github.com/dheenadhayalanperumal/weatherAPP",
+            image: mock2
         },
         {
             title: "Movie Database",
@@ -119,7 +125,7 @@ export const info = {
             image: mock5
         },
         {
-            title: "Live Weather App",
+            title: "Live Weather Application",
             live: "https://weather.dheena.live",
             source: "https://github.com/dheenadhayalanperumal/wheatherApp-prj",
             image: mock2
