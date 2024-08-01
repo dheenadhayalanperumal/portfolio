@@ -81,7 +81,7 @@ export const info = {
     bio: "As a skilled React Developer with a strong background in both web and mobile application development, I specialize in creating dynamic and responsive user interfaces using React and React Native. My extensive experience includes building complex single-page applications, implementing state management solutions, and optimizing performance for a seamless user experience.",
     skills:
         {
-            proficientWith: ['javascript', 'react', 'DSA','git', 'github', 'bootstrap', 'html5', 'css3', 'figma', 'mongoDB','Material-UI'],
+            proficientWith: ['javascript', 'react', 'React native', 'DSA','git', 'github', 'bootstrap', 'html5', 'css3', 'figma', 'mongoDB','Material-UI'],
             exposedTo: ['nodejs', 'Redux', 'adobe premiere pro',]
         }
     ,
