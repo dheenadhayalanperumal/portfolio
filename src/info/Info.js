@@ -116,7 +116,7 @@ export const info = {
             title: "Live Weather Andriod App",
             live: "https://www.amazon.com/gp/product/B0DBLR4HD7",
             source: "https://github.com/dheenadhayalanperumal/weatherAPP",
-            image: weather
+            image: mock11
         },
         {
             title: "Movie Database",
