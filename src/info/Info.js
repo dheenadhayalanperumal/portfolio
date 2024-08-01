@@ -1,5 +1,5 @@
 import self from "../img/self.png"
-import mock1 from "../img/mock1.png"
+import mock11 from "../img/mock11.png"
 import mock2 from "../img/mock2.png"
 import mock3 from "../img/mock3.png"
 import mock4 from "../img/mock4.png"
