@@ -40,7 +40,7 @@ export default function BaseLayout() {
                   <Route exact path={'/'} element={<Home/>}/>
                   <Route exact path={'/about'} element={<About/>}/>
                   <Route exact path={'/portfolio'} element={<Portfolio/>}/>
-                  <Route exact path={'/TermsandConditions'} element={<Terms/>}/>
+                  <Route exact path={'/PrivacyPolicy'} element={<Terms/>}/>
 
                </Routes>
             </Grid>
