@@ -75,8 +75,7 @@ const PrivacyPolicy = () => {
         contact us at:
       </p>
       <p>
-        [Your Email Address] <br />
-        [Your Business Address, if applicable]
+        dheenadhayalanPerumal@gmail.com <br />
       </p>
 
       <p><strong>Enjoy True Weather with the confidence that your privacy is protected.</strong></p>
