@@ -4,8 +4,7 @@ const PrivacyPolicy = () => {
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif", lineHeight: "1.6" }}>
       <h1>Privacy Policy for True Weather</h1>
-      <p><strong>Effective Date:</strong> [Insert Date]</p>
-      
+        
       <h2>Introduction</h2>
       <p>
         True Weather ("we," "us," or "our") values your privacy and is committed to protecting it. 
