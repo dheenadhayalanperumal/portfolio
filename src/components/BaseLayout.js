@@ -32,7 +32,7 @@ export default function BaseLayout() {
   }, []);
 
   // Check if the current route is '/PrivacyPolicy'
-  const isPrivacyPolicyRoute = location.pathname === '/PrivacyPolicy';
+  const isPrivacyPolicyRoute = location.pathname === '/PrivacyPolicy' || location.pathname === '/Privacy' ;
 
   return (
     <Box className={darkMode ? Style.dark : Style.light}>
@@ -52,7 +52,7 @@ export default function BaseLayout() {
             <Route exact path={'/about'} element={<About />} />
             <Route exact path={'/portfolio'} element={<Portfolio />} />
             <Route exact path={'/PrivacyPolicy'} element={<Terms />} />
-            <Route exact path={'/privacy'} element={<PrivacyPolicy />} />
+            <Route exact path={'/Privacy'} element={<PrivacyPolicy />} />
           </Routes>
         </Grid>
         
