@@ -120,13 +120,13 @@ export const info = {
         },
         {
             title: "Movie Database",
-            live: "https://movies.dheena.live", //this should be a link to the live version of your project, think github pages, netlify, heroku, etc. Or your own domain, if you have it.
+            live: "https://movies.dheenadhayalan.online", //this should be a link to the live version of your project, think github pages, netlify, heroku, etc. Or your own domain, if you have it.
             source: "https://github.com/dheenadhayalanperumal/MovieDatabase", // this should be a link to the **repository** of the project, where the code is hosted.
             image: mock5
         },
         {
             title: "Live Weather Application",
-            live: "https://weather.dheena.live",
+            live: "https://weather.dheenadhayalan.online",
             source: "https://github.com/dheenadhayalanperumal/wheatherApp-prj",
             image: mock2
         },
