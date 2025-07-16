@@ -9,6 +9,8 @@ import Portfolio from "./portfolio/Portfolio";
 import { Route, Routes } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 import PrivacyPolicy from './terms/PrivacyPolicy';
+import PrivacyPolicy from './terms/Termsandconditions';
+
 
 export default function BaseLayout() {
   let [darkMode, setDarkMode] = useState(false);
@@ -53,6 +55,7 @@ export default function BaseLayout() {
             <Route exact path={'/portfolio'} element={<Portfolio />} />
             <Route exact path={'/PrivacyPolicy'} element={<Terms />} />
             <Route exact path={'/Privacy'} element={<PrivacyPolicy />} />
+             <Route exact path={'/GamePrivacyPolicy'} element={<Termsandconditions />} />
           </Routes>
         </Grid>
         
