@@ -9,7 +9,7 @@ import Portfolio from "./portfolio/Portfolio";
 import { Route, Routes } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 import PrivacyPolicy from './terms/PrivacyPolicy';
-import PrivacyPolicy from './terms/Termsandconditions';
+import Termsandconditions from './terms/Termsandconditions';
 
 
 export default function BaseLayout() {
