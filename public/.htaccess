@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Serve app-ads.txt as plain text
+<Files "app-ads.txt">
+    ForceType text/plain
+    Header set Content-Type "text/plain; charset=utf-8"
+</Files>
+
+# Handle React Router
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/app-ads.txt$
+RewriteRule . /index.html [L]
