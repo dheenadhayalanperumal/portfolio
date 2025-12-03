@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 import PrivacyPolicy from './terms/PrivacyPolicy';
 import Termsandconditions from './terms/Termsandconditions';
+import DheefitPrivacyPolicy from './terms/DheefitPrivacyPolicy';
 
 
 export default function BaseLayout() {
@@ -56,6 +57,8 @@ export default function BaseLayout() {
             <Route exact path={'/PrivacyPolicy'} element={<Terms />} />
             <Route exact path={'/Privacy'} element={<PrivacyPolicy />} />
              <Route exact path={'/GamePrivacyPolicy'} element={<Termsandconditions />} />
+             <Route exact path={'/DheefitPrivacyPolicy'} element={<DheefitPrivacyPolicy />} />
+             
           </Routes>
         </Grid>
         
