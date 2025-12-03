@@ -35,7 +35,7 @@ export default function BaseLayout() {
   }, []);
 
   // Check if the current route is '/PrivacyPolicy'
-  const isPrivacyPolicyRoute = location.pathname === '/PrivacyPolicy' || location.pathname === '/Privacy'  || location.pathname === '/GamePrivacyPolicy';
+  const isPrivacyPolicyRoute = location.pathname === '/PrivacyPolicy' || location.pathname === '/Privacy'  || location.pathname === '/GamePrivacyPolicy' || location.pathname === '/DheefitPrivacyPolicy';
 
   return (
     <Box className={darkMode ? Style.dark : Style.light}>
