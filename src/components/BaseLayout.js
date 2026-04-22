@@ -25,9 +25,10 @@ export default function BaseLayout() {
   }
 
   useEffect(() => {
-    let detectedDarkMode = eval(localStorage.getItem('darkMode'));
+    const storedDarkMode = localStorage.getItem('darkMode');
+    const detectedDarkMode = storedDarkMode === 'true';
 
-    if (detectedDarkMode) {
+    if (storedDarkMode !== null) {
       setDarkMode(detectedDarkMode);
     } else {
       localStorage.setItem('darkMode', 'false');
