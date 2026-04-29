@@ -49,16 +49,15 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(110px);
-  opacity: 0.72;
   will-change: transform;
   animation: ed-float 14s ease-in-out infinite;
 
   &.one {
-    width: 44vw;
-    height: 44vw;
+    width: 46vw;
+    height: 46vw;
     top: -14vw;
     left: -12vw;
-    background: radial-gradient(circle, $accent 0%, transparent 65%);
+    background: radial-gradient(circle, $accent 0%, transparent 65%);  // amber
     animation-delay: 0s;
   }
   &.two {
@@ -66,25 +65,29 @@
     height: 38vw;
     bottom: -12vw;
     right: -10vw;
-    background: radial-gradient(circle, $sage 0%, transparent 65%);
+    background: radial-gradient(circle, $gold 0%, transparent 65%);    // coral
     animation-delay: -5s;
-    opacity: 0.55;
   }
   &.three {
-    width: 28vw;
-    height: 28vw;
-    top: 40%;
+    width: 32vw;
+    height: 32vw;
+    top: 38%;
     left: 55%;
-    background: radial-gradient(circle, $gold 0%, transparent 70%);
+    background: radial-gradient(circle, $sage 0%, transparent 70%);    // soft blue
     animation-delay: -8s;
-    opacity: 0.42;
   }
 }
 
+.light .blob {
+  opacity: 0.42;
+  &.two  { opacity: 0.36; }
+  &.three { opacity: 0.32; }
+}
+
 .dark .blob {
-  opacity: 0.34;
-  &.two { opacity: 0.24; }
-  &.three { opacity: 0.2; }
+  opacity: 0.45;
+  &.two  { opacity: 0.32; }
+  &.three { opacity: 0.26; }
 }
 
 .gridLines {
@@ -132,15 +135,15 @@
     height: 8px;
     border-radius: 50%;
     background: $accent;
-    box-shadow: 0 0 0 0 rgba(232, 89, 58, 0.7);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
     animation: pulse 2s infinite;
   }
 }
 
 @keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(232, 89, 58, 0.7); }
-  70%  { box-shadow: 0 0 0 12px rgba(232, 89, 58, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(232, 89, 58, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
 }
 
 .content {

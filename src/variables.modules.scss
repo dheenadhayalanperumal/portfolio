@@ -1,35 +1,42 @@
-// ── Editorial Developer Studio — Design Tokens ──────────────────────────────
+// ── Palette borrowed from dheefit.com ───────────────────────────────────────
+// bg #0a0b0d · paper #f4f2ec · amber #f59e0b · coral #ff5436 · blue #5b8cff
 
-// Surface palette (warm, paper-like)
-$paper:        #ede2d0;   // deeper cream base — more "paper" presence
-$cream:        #e3d6bf;   // mid surface for cards
-$cream-soft:   #d8c8ad;   // deeper surface for soft contrast
-$ink:          #14110d;   // warm black, slightly richer
-$ink-soft:     #1f1b16;
-$ink-mute:     #2c261e;
+// Deep ink surfaces
+$ink:          #0a0b0d;   // deepest — page bg
+$ink-soft:     #111216;   // raised surface
+$ink-mute:     #16171c;   // card / hover surface
+$ink-line:     #1f2026;   // border tone
 
-// Editorial accents
-$accent:       #d94a26;   // deeper burnt orange — primary
-$accent-soft:  #f0876a;
-$sage:         #5e6b54;   // deeper sage
-$gold:         #b8924a;   // richer gold
-$plum:         #5a3d5a;
+// Warm cream surfaces (light mode + text on dark)
+$paper:        #f4f2ec;
+$cream:        #eae7de;
+$cream-soft:   #d9d5c7;
+
+// Brand accents
+$accent:       #f59e0b;   // amber — primary signature
+$accent-soft:  #fbbf42;
+$accent-deep:  #c38f36;
+
+// Legacy alias names (used in many SCSS files) → mapped to dheefit colors
+$sage:         #5b8cff;   // soft cobalt blue
+$gold:         #ff5436;   // coral red
+$plum:         #b06f3c;   // warm bronze (rare use)
 
 // Functional UI
-$line:         rgba(20, 17, 13, 0.18);
-$line-dark:    rgba(237, 226, 208, 0.18);
-$muted:        rgba(20, 17, 13, 0.66);
-$muted-dark:   rgba(237, 226, 208, 0.7);
+$line:         rgba(10, 11, 13, 0.14);
+$line-dark:    rgba(244, 242, 236, 0.10);
+$muted:        rgba(10, 11, 13, 0.62);
+$muted-dark:   #9a9b9f;
 
-// Legacy aliases (kept so existing files don't break)
-$purple:       #8D53FF;
-$pink:         #CA6BE6;
-$white:        $cream;
+// Generic legacy aliases
+$purple:       $sage;
+$pink:         $gold;
+$white:        $paper;
 $dark:         $ink;
-$red:          #FF6057;
-$yellow:       #FFBD2E;
-$green:        #27C93F;
-$lightgray:    #c9c9c9;
+$red:          $gold;
+$yellow:       $accent;
+$green:        $accent;
+$lightgray:    #b1b8c4;
 
 // Typography stacks
 $font-display: 'Fraunces', 'Instrument Serif', 'Times New Roman', serif;
@@ -44,30 +51,30 @@ $transition:   all 320ms $ease;
 
 // Effects
 .shadowed {
-  box-shadow: 0 24px 60px -20px rgba(14, 13, 12, 0.45),
-              0 8px 18px -8px rgba(14, 13, 12, 0.25);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7),
+              0 8px 18px -8px rgba(0, 0, 0, 0.45);
 }
 
 @keyframes ed-fade-up {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes ed-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes ed-shimmer {
   0%   { background-position: -120% 0; }
   100% { background-position: 220% 0; }
 }
-
 @keyframes ed-spin {
   to { transform: rotate(360deg); }
 }
-
 @keyframes ed-float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-8px); }
+}
+@keyframes ed-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.55); }
+  50%      { box-shadow: 0 0 24px 6px rgba(245, 158, 11, 0.35); }
 }

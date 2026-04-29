@@ -133,7 +133,7 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: $transition;
-  box-shadow: 0 8px 18px -8px rgba(217, 74, 38, 0.55);
+  box-shadow: 0 8px 18px -8px rgba(245, 158, 11, 0.55);
 
   i, span { color: #fff; }
   i { font-size: 0.82rem; }
@@ -146,7 +146,7 @@
     background: $ink;
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -10px rgba(20, 17, 13, 0.6);
+    box-shadow: 0 12px 24px -10px rgba(10, 11, 13, 0.6);
   }
   &:hover i, &:hover span { color: #fff; }
   &:hover .arrow { transform: translate(2px, -2px); }
