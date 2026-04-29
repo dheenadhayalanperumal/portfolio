@@ -62,7 +62,7 @@ export default function Navbar({ darkMode, handleClick }) {
       >
         <span className={Style.mono}>{info.initials}</span>
         <span className={Style.label}>
-          {info.firstName}<br />Studio · {new Date().getFullYear()}
+          {info.firstName}<br />Portfolio · {new Date().getFullYear()}
         </span>
       </div>
 

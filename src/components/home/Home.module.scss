@@ -222,9 +222,138 @@
   }
 }
 
-.socials {
+// ── Promoted profile links (GitHub / LinkedIn) ────────────────────────────
+.profiles {
+  margin-top: 1.4rem;
   display: flex;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  max-width: 600px;
+}
+
+.profile {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 1rem 0.7rem 0.85rem;
+  border-radius: 14px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card) 60%, transparent);
+  backdrop-filter: blur(10px);
+  font-family: $font-sans;
+  cursor: pointer;
+  overflow: hidden;
+  transition: $transition;
+  min-width: 220px;
+
+  i {
+    font-size: 1.4rem;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--ed-card-soft) 70%, transparent);
+    color: var(--ed-fg);
+    transition: $transition;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--profile-color, #{$accent}) 22%, transparent),
+      transparent 60%);
+    opacity: 0;
+    transition: opacity 360ms $ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--profile-color, $accent);
+    box-shadow: 0 14px 32px -12px color-mix(in srgb, var(--profile-color, #{$accent}) 60%, transparent),
+                0 0 0 1px color-mix(in srgb, var(--profile-color, #{$accent}) 40%, transparent);
+
+    i {
+      background: var(--profile-color, $accent);
+      color: $ink;
+      transform: rotate(-6deg) scale(1.06);
+    }
+
+    .profileArrow {
+      transform: translate(3px, -3px);
+      color: var(--profile-color, $accent);
+    }
+  }
+
+  &:hover::before { opacity: 1; }
+}
+
+.profileMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.profileLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ed-fg);
+}
+
+.profileHandle {
+  margin-top: 0.15rem;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ed-muted);
+  max-width: 18ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profileArrow {
+  font-size: 1rem;
+  color: var(--ed-muted);
+  transition: transform 320ms $ease, color 320ms $ease;
+}
+
+// Brand-color accents
+.profileGithub  { --profile-color: #{$accent}; }   // electric lime
+.profileLinkedin {
+  --profile-color: #{$sage};                       // cobalt blue
+  i {
+    color: $sage;
+  }
+}
+.profileGithub i { color: $accent; }
+
+// Linkedin hover keeps cobalt accent pop on icon text too
+.profileLinkedin:hover i { color: #fff; background: $sage; }
+
+// ── Small social icons row (everyone else) ────────────────────────────────
+.socials {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.socialsCaption {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  margin-right: 0.3rem;
 }
 
 // ── Avatar / portrait composition ──────────────────────────────────────────

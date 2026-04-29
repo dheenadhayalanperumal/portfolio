@@ -6,6 +6,18 @@ import EmojiBullet from './EmojiBullet';
 import SocialIcon from './SocialIcon';
 import { info } from '../../info/Info';
 
+// Pull GitHub & LinkedIn out of socials by label so we can promote them
+// to first-class profile buttons. Falls back gracefully if absent.
+const findSocial = (label) =>
+  info.socials.find((s) => s.label?.toLowerCase() === label);
+
+const githubProfile = findSocial('github');
+const linkedinProfile = findSocial('linkedin');
+// Remaining socials get the small-icon row.
+const otherSocials = info.socials.filter(
+  (s) => !['github', 'linkedin'].includes(s.label?.toLowerCase())
+);
+
 export default function Home() {
   const navigate = useNavigate();
   const avatarRef = useRef(null);
@@ -83,9 +95,52 @@ export default function Home() {
           >
             ✦ get in touch
           </a>
+        </div>
 
+        <div className={Style.profiles} aria-label="profile links">
+          {githubProfile && (
+            <a
+              className={`${Style.profile} ${Style.profileGithub}`}
+              href={githubProfile.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+            >
+              <i className="fa fa-github" aria-hidden="true" />
+              <span className={Style.profileMeta}>
+                <span className={Style.profileLabel}>GitHub</span>
+                <span className={Style.profileHandle}>
+                  @{githubProfile.link.split('/').filter(Boolean).pop()}
+                </span>
+              </span>
+              <span className={Style.profileArrow}>↗</span>
+            </a>
+          )}
+
+          {linkedinProfile && (
+            <a
+              className={`${Style.profile} ${Style.profileLinkedin}`}
+              href={linkedinProfile.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+            >
+              <i className="fa fa-linkedin" aria-hidden="true" />
+              <span className={Style.profileMeta}>
+                <span className={Style.profileLabel}>LinkedIn</span>
+                <span className={Style.profileHandle}>
+                  /in/{linkedinProfile.link.replace(/\/+$/, '').split('/in/')[1] || 'connect'}
+                </span>
+              </span>
+              <span className={Style.profileArrow}>↗</span>
+            </a>
+          )}
+        </div>
+
+        {otherSocials.length > 0 && (
           <div className={Style.socials}>
-            {info.socials.map((social, i) => (
+            <span className={Style.socialsCaption}>also on —</span>
+            {otherSocials.map((social, i) => (
               <SocialIcon
                 key={i}
                 link={social.link}
@@ -95,7 +150,7 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        )}
       </div>
 
       <div className={Style.portrait}>
