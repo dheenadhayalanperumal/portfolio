@@ -1,14 +1,73 @@
-$purple: #8D53FF;
-$pink: #CA6BE6;
-$white: #f8f8f8;
-$dark: #1f1f1f;
-$red: #FF6057;
-$yellow: #FFBD2E;
-$green: #27C93F;
-$lightgray: #c9c9c9;
+// ── Editorial Developer Studio — Design Tokens ──────────────────────────────
 
-$transition: all 250ms ease;
+// Surface palette (warm, paper-like)
+$paper:        #ede2d0;   // deeper cream base — more "paper" presence
+$cream:        #e3d6bf;   // mid surface for cards
+$cream-soft:   #d8c8ad;   // deeper surface for soft contrast
+$ink:          #14110d;   // warm black, slightly richer
+$ink-soft:     #1f1b16;
+$ink-mute:     #2c261e;
 
+// Editorial accents
+$accent:       #d94a26;   // deeper burnt orange — primary
+$accent-soft:  #f0876a;
+$sage:         #5e6b54;   // deeper sage
+$gold:         #b8924a;   // richer gold
+$plum:         #5a3d5a;
+
+// Functional UI
+$line:         rgba(20, 17, 13, 0.18);
+$line-dark:    rgba(237, 226, 208, 0.18);
+$muted:        rgba(20, 17, 13, 0.66);
+$muted-dark:   rgba(237, 226, 208, 0.7);
+
+// Legacy aliases (kept so existing files don't break)
+$purple:       #8D53FF;
+$pink:         #CA6BE6;
+$white:        $cream;
+$dark:         $ink;
+$red:          #FF6057;
+$yellow:       #FFBD2E;
+$green:        #27C93F;
+$lightgray:    #c9c9c9;
+
+// Typography stacks
+$font-display: 'Fraunces', 'Instrument Serif', 'Times New Roman', serif;
+$font-sans:    'Geist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono:    'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+
+// Motion
+$ease:         cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+$ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+$transition:   all 320ms $ease;
+
+// Effects
 .shadowed {
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,0.4);
+  box-shadow: 0 24px 60px -20px rgba(14, 13, 12, 0.45),
+              0 8px 18px -8px rgba(14, 13, 12, 0.25);
+}
+
+@keyframes ed-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ed-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ed-shimmer {
+  0%   { background-position: -120% 0; }
+  100% { background-position: 220% 0; }
+}
+
+@keyframes ed-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ed-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
 }

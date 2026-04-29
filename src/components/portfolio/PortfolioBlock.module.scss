@@ -1,0 +1,181 @@
+@import "../../variables.modules";
+
+.block {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card) 55%, transparent);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 380ms $ease, border-color 320ms ease, box-shadow 380ms ease;
+  will-change: transform;
+
+  &:hover {
+    border-color: color-mix(in srgb, $accent 65%, var(--ed-line));
+    box-shadow: 0 30px 60px -28px rgba(14, 13, 12, 0.45);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      400px circle at var(--mx) var(--my),
+      color-mix(in srgb, $accent 22%, transparent),
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 360ms ease;
+  }
+  &:hover::after { opacity: 1; }
+}
+
+.thumb {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  background: linear-gradient(135deg, var(--ed-card-soft), var(--ed-card));
+  transform: translateZ(40px);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transform: scale(1.02);
+    transition: transform 800ms $ease, filter 600ms $ease;
+    filter: contrast(1.04) saturate(1.05);
+  }
+
+  .block:hover & img {
+    transform: scale(1.06);
+  }
+}
+
+.index {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  z-index: 2;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(14, 13, 12, 0.7);
+  color: $paper;
+  backdrop-filter: blur(6px);
+}
+
+.gloss {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 900ms $ease;
+  pointer-events: none;
+}
+.block:hover .gloss { transform: translateX(100%); }
+
+// ── Meta block ────────────────────────────────────────────────────────────
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transform: translateZ(20px);
+}
+
+.title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  flex: 1 1 220px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.05rem;
+  border-radius: 999px;
+  background: $accent;
+  color: #fff;
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: $transition;
+  box-shadow: 0 8px 18px -8px rgba(217, 74, 38, 0.55);
+
+  i, span { color: #fff; }
+  i { font-size: 0.82rem; }
+  .arrow {
+    transition: transform 280ms $ease;
+    display: inline-block;
+  }
+
+  &:hover {
+    background: $ink;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(20, 17, 13, 0.6);
+  }
+  &:hover i, &:hover span { color: #fff; }
+  &:hover .arrow { transform: translate(2px, -2px); }
+}
+
+.actionGhost {
+  background: transparent;
+  color: var(--ed-fg);
+  border: 1px solid var(--ed-line);
+  box-shadow: none;
+
+  i, span { color: var(--ed-fg); }
+
+  &:hover {
+    background: transparent;
+    color: $accent;
+    border-color: $accent;
+    box-shadow: none;
+  }
+  &:hover i, &:hover span { color: $accent; }
+}
+
+.locked {
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px dashed var(--ed-line);
+}

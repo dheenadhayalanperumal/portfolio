@@ -1,23 +1,161 @@
 @import "../variables.modules";
 
-nav {
-  transition: $transition;
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem clamp(1rem, 4vw, 3rem);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ed-bg) 88%, transparent) 0%,
+    color-mix(in srgb, var(--ed-bg) 60%, transparent) 100%
+  );
+  border-bottom: 1px solid var(--ed-line);
+  transition: backdrop-filter 200ms $ease, background 200ms $ease;
 }
 
-.active {
-  border-bottom: 5px solid;
-  border-image-slice: 1;
-}
+// Brand monogram
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  user-select: none;
 
-li {
-  transition: $transition;
+  .mono {
+    font-family: $font-display;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.7rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, $accent, $gold 60%, $sage);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 400ms $ease-spring;
+  }
 
-  &:hover {
-    transform: translateY(-3px);
-    transition: $transition;
+  .label {
+    font-family: $font-mono;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ed-muted);
+    line-height: 1.1;
+    display: none;
+
+    @media (min-width: 700px) {
+      display: block;
+    }
+  }
+
+  &:hover .mono {
+    transform: rotate(-6deg) scale(1.06);
   }
 }
 
-.link:hover {
-  color: unset;
+// Pill nav
+.pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card) 60%, transparent);
+}
+
+.indicator {
+  position: absolute;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  border-radius: 999px;
+  background: var(--ed-fg);
+  transition: left 480ms $ease, width 480ms $ease;
+  z-index: 0;
+}
+
+.link {
+  position: relative;
+  z-index: 1;
+  padding: 0.55rem 1.1rem;
+  font-family: $font-sans;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--ed-fg);
+  border-radius: 999px;
+  transition: color 320ms $ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: $accent;
+  }
+
+  // Active label sits on the dark indicator pill — invert.
+  &.activeLink,
+  &.activeLink:hover,
+  &.activeLink:visited {
+    color: var(--ed-bg);
+  }
+
+  @media (max-width: 540px) {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.76rem;
+  }
+}
+
+// Toggle
+.toggle {
+  position: relative;
+  width: 56px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--ed-line);
+  background: var(--ed-card);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  transition: background 320ms $ease, border-color 320ms $ease;
+
+  &:hover {
+    border-color: $accent;
+  }
+
+  .knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $accent, $gold);
+    box-shadow: 0 4px 12px rgba(232, 89, 58, 0.35);
+    transition: transform 380ms $ease-spring;
+    display: grid;
+    place-items: center;
+    color: $paper;
+    font-size: 0.7rem;
+  }
+}
+
+.toggleOn .knob {
+  transform: translateX(26px);
+  background: linear-gradient(135deg, $sage, $cream);
+  color: $ink;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
 }

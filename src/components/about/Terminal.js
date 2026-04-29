@@ -1,28 +1,48 @@
 import React from 'react';
-import Style from "./Terminal.module.scss";
-import classNames from "classnames";
-import {Box} from "@mui/material";
+import Style from './Terminal.module.scss';
 
-const iconClass = "fa fa-circle";
-
-function Terminal(props) {
-   const {text} = props;
-
-   return (
-      <Box component={'section'} className={classNames(Style.terminal, Style.shadowed)}
-           width={{xs: '80%', md: '50%'}} borderRadius={'0.5rem'} mb={'4rem'}>
-         <Box sx={{backgroundColor: '#8c8c8c'}} p={'0.5rem'} borderRadius={'0.5rem 0.5rem 0 0'}
-              fontSize={'1rem'}>
-            <i className={classNames(iconClass, Style.red)}/>
-            <i className={classNames(iconClass, Style.amber)}/>
-            <i className={classNames(iconClass, Style.green)}/>
-         </Box>
-         <Box py={{xs: '1rem', md: '2rem'}} px={{xs: '2rem', md: '3rem'}} borderRadius={'0 0 0.5rem 0.5rem'}
-              sx={{backgroundColor: '#27242f'}} fontSize={'1.5rem'} fontFamily={'Courier New, Courier, monospace'}>
-            {text}
-         </Box>
-      </Box>
-   );
+function Terminal({ children, title = '~/portfolio', prompt = 'guest@studio' }) {
+  return (
+    <section className={Style.terminal} aria-label="terminal">
+      <header className={Style.bar}>
+        <span className={`${Style.dot} ${Style.r}`} />
+        <span className={`${Style.dot} ${Style.y}`} />
+        <span className={`${Style.dot} ${Style.g}`} />
+        <span className={Style.title}>{title}</span>
+      </header>
+      <div className={Style.body}>
+        {React.Children.map(children, (child) => {
+          if (!React.isValidElement(child)) return child;
+          // Inject the prompt into <Terminal.Line>
+          if (child.type && child.type.displayName === 'TerminalLine') {
+            return React.cloneElement(child, { prompt });
+          }
+          return child;
+        })}
+      </div>
+    </section>
+  );
 }
+
+function Line({ cmd, prompt = 'guest@studio', delay = 0 }) {
+  return (
+    <div className={Style.line} style={{ animationDelay: `${delay}ms` }}>
+      <span className={Style.prompt}>{prompt} <span style={{ opacity: 0.6 }}>~</span> $</span>
+      <span className={Style.cmd}>{cmd}</span>
+    </div>
+  );
+}
+Line.displayName = 'TerminalLine';
+
+function Output({ children, delay = 0 }) {
+  return (
+    <div className={Style.output} style={{ animationDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
+}
+
+Terminal.Line = Line;
+Terminal.Output = Output;
 
 export default Terminal;

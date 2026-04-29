@@ -1,21 +1,253 @@
 @import "../../variables.modules";
 
-.pink {
-  color: $pink;
+.wrap {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3rem) 6rem;
 }
 
-.green {
-  color: $green;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ed-fg);
+  }
 }
 
-.skills {
-  columns: 1;
-  @media only screen and (min-width: 940px) {
-    columns: 2;
+.heading {
+  margin-top: 1.2rem;
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+
+  em {
+    font-style: italic;
+    background: linear-gradient(135deg, $accent, $gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.intro {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--ed-muted);
+  max-width: 60ch;
+}
+
+// ── Sections grid ──────────────────────────────────────────────────────────
+.sections {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+
+  @media (min-width: 1000px) {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: start;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+// ── Skill block ────────────────────────────────────────────────────────────
+.card {
+  position: relative;
+  border: 1px solid var(--ed-line);
+  border-radius: 18px;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  background: color-mix(in srgb, var(--ed-card) 55%, transparent);
+  overflow: hidden;
+  transition: $transition;
+
+  &:hover {
+    border-color: color-mix(in srgb, $accent 60%, var(--ed-line));
+    transform: translateY(-2px);
   }
 
-  li {
-    margin: 0;
-    line-height: 1.75;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: radial-gradient(
+      400px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, $accent 18%, transparent),
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+  }
+  &:hover::before { opacity: 1; }
+}
+
+.cardLabel {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  margin-top: 0.6rem;
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.skillList {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill {
+  --i: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card-soft) 50%, transparent);
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  text-transform: lowercase;
+  cursor: default;
+  transition: transform 380ms $ease-spring, border-color 280ms ease, background 280ms ease, color 280ms ease;
+  animation: ed-fade-up 500ms $ease both;
+  animation-delay: calc(60ms * var(--i));
+
+  &::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: $accent;
+    opacity: 0.7;
+  }
+
+  &:hover {
+    transform: translateY(-3px) rotate(-1deg);
+    border-color: $accent;
+    background: $accent;
+    color: $paper;
+  }
+  &:hover::before { background: $paper; }
+}
+
+.skillSecondary::before {
+  background: $sage;
+}
+
+// ── Hobbies ────────────────────────────────────────────────────────────────
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+
+  @media (min-width: 540px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.hobby {
+  position: relative;
+  padding: 1.1rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card-soft) 40%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  transition: $transition;
+  cursor: default;
+
+  .hEmoji {
+    font-size: 1.6rem;
+    transition: transform 380ms $ease-spring;
+  }
+
+  .hLabel {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ed-muted);
+  }
+
+  &:hover {
+    border-color: $accent;
+    transform: translateY(-3px);
+    .hEmoji { transform: scale(1.2) rotate(-6deg); }
+    .hLabel { color: var(--ed-fg); }
+  }
+}
+
+// ── Stats strip ────────────────────────────────────────────────────────────
+.stats {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--ed-line);
+  border: 1px solid var(--ed-line);
+  border-radius: 18px;
+  overflow: hidden;
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat {
+  background: var(--ed-bg);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: background 320ms ease;
+
+  &:hover { background: color-mix(in srgb, $accent 6%, var(--ed-bg)); }
+
+  .num {
+    font-family: $font-display;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .lab {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ed-muted);
   }
 }

@@ -1,39 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
 @import "./variables.modules";
 
-
-body {
-    font-family: 'Roboto', Helvetica, sans-serif;
-    font-size: 1.5vh;
-    width: 100%;
-    height: 100%;
-    color: $dark;
-    background-color: $white;
-    box-sizing: border-box;
-}
-
-li {
-    color: $dark;
+:root {
+  --ed-bg: #{$paper};
+  --ed-fg: #{$ink};
+  --ed-muted: #{$muted};
+  --ed-line: #{$line};
+  --ed-accent: #{$accent};
+  --ed-accent-soft: #{$accent-soft};
+  --ed-sage: #{$sage};
+  --ed-gold: #{$gold};
+  --ed-paper: #{$paper};
+  --ed-cream: #{$cream};
+  --ed-ink: #{$ink};
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a,
-a:link,
-a:hover,
-a:visited,
-a:active {
-    text-decoration: none;
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-sans;
+  font-size: 1rem;
+  line-height: 1.6;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--ed-fg);
+  background-color: var(--ed-bg);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -20%, color-mix(in srgb, var(--ed-bg-tint, transparent) 60%, transparent), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, color-mix(in srgb, var(--ed-bg-tint, transparent) 40%, transparent), transparent 60%);
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-display;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+p {
+  font-family: $font-sans;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+// :where() keeps specificity at 0 so component-level colors always win.
+:where(a, a:link, a:hover, a:visited, a:active) {
+  text-decoration: none;
+  color: inherit;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
+  display: block;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
+}
+
+li {
+  color: inherit;
+}
+
+::selection {
+  background: $accent;
+  color: $paper;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 13, 12, 0.18);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background 200ms ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $accent;
+  background-clip: padding-box;
+}
+
+// Reusable utility classes
+.ed-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 900ms $ease, transform 900ms $ease;
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ed-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }

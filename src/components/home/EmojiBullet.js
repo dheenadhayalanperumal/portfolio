@@ -1,16 +1,16 @@
 import React from 'react';
-import {Box} from "@mui/material";
+import Style from './Home.module.scss';
 
-function EmojiBullet(props) {
-    const {emoji, text} = props;
-
-    return (
-        <Box component={'li'} fontSize={'1rem'} lineHeight={1.5} style={{cursor: 'default'}}>
-            <Box component={'span'} aria-label="cheese"
-                 role="img"
-                 mr={{xs: '0.5rem', md: '1rem'}} fontSize={'1.5rem'}>{emoji}</Box> {text}
-        </Box>
-    );
+function EmojiBullet({ emoji, text, delay = '0ms' }) {
+  return (
+    <li
+      className={Style.chip}
+      style={{ animationDelay: delay }}
+    >
+      <span className={Style.emoji} role="img" aria-label="bullet">{emoji}</span>
+      <span>{text}</span>
+    </li>
+  );
 }
 
 export default EmojiBullet;

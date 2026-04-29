@@ -1,75 +1,149 @@
 @import "../variables.modules";
 
-footer {
-  color: $dark;
+.shell {
+  position: relative;
+  min-height: 100vh;
+  transition: background-color 600ms $ease, color 600ms $ease;
+  isolation: isolate;
+}
+
+// ── Themes ─────────────────────────────────────────────────────────────────
+// Theme switching is purely via CSS custom properties; never reset
+// component colors broadly (it caused .action / nav links to inherit body color).
+.light {
+  --ed-bg: #{$paper};
+  --ed-fg: #{$ink};
+  --ed-muted: #{$muted};
+  --ed-line: #{$line};
+  --ed-card: #{$cream};
+  --ed-card-soft: #{$cream-soft};
+  --ed-bg-tint: #{$cream-soft};
+
+  background-color: var(--ed-bg);
+  color: var(--ed-fg);
 }
 
 .dark {
-  background-color: $dark;
-  color: $white;
-  transition: all 400ms;
+  --ed-bg: #{$ink};
+  --ed-fg: #{$paper};
+  --ed-muted: #{$muted-dark};
+  --ed-line: #{$line-dark};
+  --ed-card: #{$ink-soft};
+  --ed-card-soft: #{$ink-mute};
+  --ed-bg-tint: #{$ink-soft};
 
-  a, i, li {
-    color: $white;
-    transition: color 400ms;
+  background-color: var(--ed-bg);
+  color: var(--ed-fg);
+}
+
+// ── Atmospheric backdrop ───────────────────────────────────────────────────
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.72;
+  will-change: transform;
+  animation: ed-float 14s ease-in-out infinite;
+
+  &.one {
+    width: 44vw;
+    height: 44vw;
+    top: -14vw;
+    left: -12vw;
+    background: radial-gradient(circle, $accent 0%, transparent 65%);
+    animation-delay: 0s;
   }
-
-  a:visited {
-    color: $white;
+  &.two {
+    width: 38vw;
+    height: 38vw;
+    bottom: -12vw;
+    right: -10vw;
+    background: radial-gradient(circle, $sage 0%, transparent 65%);
+    animation-delay: -5s;
+    opacity: 0.55;
   }
-
-  footer {
-    color: $white;
+  &.three {
+    width: 28vw;
+    height: 28vw;
+    top: 40%;
+    left: 55%;
+    background: radial-gradient(circle, $gold 0%, transparent 70%);
+    animation-delay: -8s;
+    opacity: 0.42;
   }
 }
 
-.light {
-  background-color: $white;
-  color: $dark;
-  transition: all 400ms;
+.dark .blob {
+  opacity: 0.34;
+  &.two { opacity: 0.24; }
+  &.three { opacity: 0.2; }
 }
 
+.gridLines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--ed-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ed-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 78%);
+  opacity: 0.7;
+}
 
-//.dark {
-//  background-color: $dark;
-//  color: $white;
-//  transition: all 400ms;
-//  a, i {
-//    color: $white;
-//    transition: color 400ms;
-//  }
-//  a:visited {
-//    color: $white;
-//  }
-//  i:hover {
-//    color: $purple;
-//  }
-//  footer {
-//    color: $white;
-//  }
-//
-//  nav {
-//    background-color: $dark;
-//    transition: $transition;
-//  }
-//
-//  div > section > div:first-child {
-//    background-color: #575e64;
-//    i:first-child {
-//      color: $red;
-//    }
-//    i:nth-child(2) {
-//      color: $yellow;
-//    }
-//    i:nth-child(3) {
-//      color: $green;
-//    }
-//  }
-//
-//
-//  & > div div {
-//    i {
-//      color: white;
-//    }
-//  }
-//}
+// Page enter transition
+.pageEnter {
+  animation: ed-fade-up 700ms $ease both;
+}
+
+// Footer
+.footer {
+  position: relative;
+  z-index: 2;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--ed-line);
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  span:last-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $accent;
+    box-shadow: 0 0 0 0 rgba(232, 89, 58, 0.7);
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(232, 89, 58, 0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(232, 89, 58, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 89, 58, 0); }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}

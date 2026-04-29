@@ -1,0 +1,78 @@
+@import "../../variables.modules";
+
+.wrap {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3rem) 6rem;
+}
+
+.head {
+  max-width: 720px;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ed-fg);
+  }
+}
+
+.title {
+  margin-top: 1.2rem;
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+
+  em {
+    font-style: italic;
+    background: linear-gradient(135deg, $accent, $gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.lede {
+  margin-top: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.65;
+  color: var(--ed-muted);
+  max-width: 60ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+  }
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.8rem;
+  }
+}
+
+.cell {
+  @media (min-width: 1100px) {
+    grid-column: span 3;
+    &[data-span="wide"] { grid-column: span 6; }
+  }
+}
