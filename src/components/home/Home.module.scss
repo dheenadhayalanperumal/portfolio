@@ -364,6 +364,13 @@
   align-items: center;
   padding: 1.5rem;
 
+  // The single-column layout stacks grid items in DOM order, which put the
+  // portrait below the copy. Lift it above the headline on narrow screens.
+  @media (max-width: 979px) {
+    order: -1;
+    padding: 0 1.5rem 0.5rem;
+  }
+
   @media (min-width: 980px) {
     justify-content: flex-end;
   }
