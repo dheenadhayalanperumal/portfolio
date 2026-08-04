@@ -1,0 +1,288 @@
+@import "../../variables.modules";
+
+.feature {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card) 62%, transparent);
+  padding: clamp(1.5rem, 4vw, 2.8rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  transition: $transition;
+
+  &:hover {
+    border-color: color-mix(in srgb, $accent 55%, var(--ed-line));
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1.5fr 0.8fr;
+  }
+}
+
+// Soft brand wash behind the card, so the founder project reads as elevated
+// without shouting.
+.glow {
+  position: absolute;
+  inset: -40% -10% auto -10%;
+  height: 340px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 40%, color-mix(in srgb, #{$accent} 26%, transparent), transparent 62%),
+    radial-gradient(circle at 78% 30%, color-mix(in srgb, #{$sage} 22%, transparent), transparent 60%);
+  filter: blur(28px);
+  opacity: 0.85;
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+}
+
+// ── Badge row ──────────────────────────────────────────────────────────────
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, #{$accent} 50%, var(--ed-line));
+  background: color-mix(in srgb, #{$accent} 12%, transparent);
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ed-fg);
+
+  .pip {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $accent;
+  }
+}
+
+.period {
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+}
+
+// ── Copy ───────────────────────────────────────────────────────────────────
+.title {
+  margin-top: 1.2rem;
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+
+  em {
+    font-style: italic;
+    background: linear-gradient(135deg, $accent, $gold 60%, $sage);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.role {
+  margin-top: 0.7rem;
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $accent-deep;
+}
+
+.summary {
+  margin-top: 1.1rem;
+  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  line-height: 1.65;
+  color: var(--ed-muted);
+  max-width: 62ch;
+}
+
+// ── Tech chips ─────────────────────────────────────────────────────────────
+.chips {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip {
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--ed-line);
+  background: color-mix(in srgb, var(--ed-card-soft) 55%, transparent);
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ed-fg);
+}
+
+// ── Actions ────────────────────────────────────────────────────────────────
+.actions {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: $ink;
+  color: $paper;
+  font-family: $font-sans;
+  font-weight: 500;
+  font-size: 0.88rem;
+  overflow: hidden;
+  transition: transform 420ms $ease-spring, box-shadow 420ms $ease;
+  box-shadow: 0 12px 28px -14px rgba(10, 11, 13, 0.55);
+
+  span { position: relative; z-index: 1; color: $paper; }
+
+  .arrow {
+    display: inline-block;
+    transition: transform 360ms $ease;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, $accent, $gold);
+    transform: translateY(101%);
+    transition: transform 480ms $ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px -14px rgba(245, 158, 11, 0.55);
+  }
+  &:hover::before { transform: translateY(0); }
+  &:hover .arrow { transform: translateX(4px); }
+}
+
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid var(--ed-line);
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ed-fg);
+  transition: $transition;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+    transform: translateY(-2px);
+  }
+}
+
+// ── Decorative phone ───────────────────────────────────────────────────────
+.aside {
+  position: relative;
+  z-index: 1;
+  display: none;
+  justify-content: center;
+
+  @media (min-width: 900px) {
+    display: flex;
+  }
+}
+
+// Height follows the screen, so the frame matches whatever screenshot ratio
+// is supplied rather than forcing a crop.
+.phone {
+  position: relative;
+  width: 214px;
+  border-radius: 30px;
+  padding: 9px;
+  background: linear-gradient(160deg, #26241f, #14120f);
+  box-shadow: 0 30px 60px -26px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.notch {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 62px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  z-index: 2;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1344 / 2992;   // the screenshot's native ratio
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(170deg,
+    color-mix(in srgb, #{$accent} 22%, #16151a),
+    #16151a 58%);
+}
+
+.shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+// Fallback when no screenshot is supplied.
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1.2rem 1rem;
+}
+
+.screenLabel {
+  font-family: $font-display;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #f4f2ec;
+}
+
+.screenSub {
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 242, 236, 0.6);
+}
+

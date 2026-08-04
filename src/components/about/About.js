@@ -106,7 +106,7 @@ export default function About() {
         </div>
         <div className={Style.stat}>
           <span className={Style.num}>∞</span>
-          <span className={Style.lab}>cups of coffee</span>
+          <span className={Style.lab}>cups of Lemonade</span>
         </div>
       </div>
     </section>

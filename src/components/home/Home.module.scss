@@ -109,6 +109,23 @@
   }
 }
 
+// A linked part of the subhead — underlined so it reads as a link without
+// relying on colour alone.
+.subheadLink {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, #{$accent} 55%, transparent);
+  text-underline-offset: 3px;
+  transition: color 280ms $ease, text-decoration-color 280ms $ease;
+
+  strong { color: var(--ed-fg); }
+
+  &:hover {
+    text-decoration-color: $accent;
+
+    strong { color: $accent-deep; }
+  }
+}
+
 // ── Status chips ───────────────────────────────────────────────────────────
 .chips {
   margin-top: 2rem;
@@ -219,6 +236,195 @@
     border-color: $accent;
     color: $accent;
     transform: translateY(-2px);
+  }
+}
+
+// ── Founder project strip ─────────────────────────────────────────────────
+.founder {
+  position: relative;
+  margin-top: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, #{$accent} 42%, var(--ed-line));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, #{$accent} 12%, transparent),
+    transparent 62%
+  );
+  max-width: 600px;
+  overflow: hidden;
+  transition: $transition;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: $accent;
+    box-shadow: 0 14px 32px -14px color-mix(in srgb, #{$accent} 65%, transparent);
+
+    .founderArrow { transform: translateX(4px); }
+  }
+}
+
+.founderPip {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: $accent;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  animation: pulse2 2.4s infinite;
+}
+
+.founderMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.founderKicker {
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+}
+
+.founderName {
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ed-fg);
+
+  em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--ed-muted);
+  }
+}
+
+.founderArrow {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: $accent;
+  transition: transform 320ms $ease;
+}
+
+// ── Current roles ─────────────────────────────────────────────────────────
+.roles {
+  margin-top: 1.6rem;
+  max-width: 600px;
+}
+
+.rolesLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+
+  &::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ed-line);
+  }
+}
+
+.rolesList {
+  margin-top: 0.7rem;
+  border: 1px solid var(--ed-line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ed-card) 45%, transparent);
+}
+
+.role + .role {
+  border-top: 1px solid var(--ed-line);
+}
+
+.roleLink,
+.roleStatic {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.85rem 1rem;
+  transition: background 280ms $ease;
+}
+
+.roleLink:hover {
+  background: color-mix(in srgb, #{$accent} 9%, transparent);
+
+  .roleTitle { color: $accent-deep; }
+}
+
+.roleDot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $accent;
+}
+
+.roleText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.roleTitle {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ed-fg);
+  transition: color 280ms $ease;
+}
+
+.roleOrg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--ed-muted);
+}
+
+.roleType {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--ed-line);
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rolePeriod {
+  flex-shrink: 0;
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  text-align: right;
+}
+
+@media (max-width: 520px) {
+  .roleLink,
+  .roleStatic {
+    flex-wrap: wrap;
+  }
+  .rolePeriod {
+    flex-basis: 100%;
+    text-align: left;
+    padding-left: calc(7px + 0.8rem);
   }
 }
 

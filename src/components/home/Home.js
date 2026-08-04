@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Style from './Home.module.scss';
 import me from '../../img/self.png';
 import EmojiBullet from './EmojiBullet';
@@ -63,9 +63,17 @@ export default function Home() {
         </h1>
 
         <p className={Style.subhead}>
-          A <strong>full-stack developer</strong> crafting fast, accessible
-          interfaces and resilient backends. I obsess over typography, motion,
-          and the details that make products feel alive.
+          {info.subhead.map((part, i) => {
+            const content = part.strong ? <strong>{part.text}</strong> : part.text;
+
+            return part.to ? (
+              <Link key={i} to={part.to} className={Style.subheadLink}>
+                {content}
+              </Link>
+            ) : (
+              <React.Fragment key={i}>{content}</React.Fragment>
+            );
+          })}
         </p>
 
         <ul className={Style.chips} aria-label="bio">
@@ -96,6 +104,63 @@ export default function Home() {
             ✦ get in touch
           </a>
         </div>
+
+        {/* Founder project, surfaced on the landing page rather than buried
+            in the work grid. */}
+        {info.dheefit && (
+          <Link to="/dheefit" className={Style.founder}>
+            <span className={Style.founderPip} aria-hidden="true" />
+            <span className={Style.founderMeta}>
+              <span className={Style.founderKicker}>
+                {info.dheefit.labels.homeKicker}
+              </span>
+              <span className={Style.founderName}>
+                {info.dheefit.name} <em>{info.dheefit.labels.homeSubtitle}</em>
+              </span>
+            </span>
+            <span className={Style.founderArrow} aria-hidden="true">→</span>
+          </Link>
+        )}
+
+        {/* Both roles run at the same time — the day job and the product. */}
+        {info.experience?.length > 0 && (
+          <div className={Style.roles}>
+            <span className={Style.rolesLabel}>
+              {info.experienceSection?.label}
+            </span>
+            <ul className={Style.rolesList}>
+              {info.experience.map((job) => {
+                const inner = (
+                  <>
+                    <span className={Style.roleDot} aria-hidden="true" />
+                    <span className={Style.roleText}>
+                      <span className={Style.roleTitle}>{job.role}</span>
+                      <span className={Style.roleOrg}>
+                        {job.org}
+                        {job.type && (
+                          <span className={Style.roleType}>{job.type}</span>
+                        )}
+                      </span>
+                    </span>
+                    <span className={Style.rolePeriod}>{job.period}</span>
+                  </>
+                );
+
+                return (
+                  <li key={`${job.role}-${job.org}`} className={Style.role}>
+                    {job.link ? (
+                      <Link to={job.link} className={Style.roleLink}>
+                        {inner}
+                      </Link>
+                    ) : (
+                      <div className={Style.roleStatic}>{inner}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
 
         <div className={Style.profiles} aria-label="profile links">
           {githubProfile && (

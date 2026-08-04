@@ -7,6 +7,7 @@ import Home from './home/Home';
 import About from './about/About';
 import Terms from './terms/Terms';
 import Portfolio from './portfolio/Portfolio';
+import DheeFit from './dheefit/DheeFit';
 import { Box } from '@mui/material';
 import PrivacyPolicy from './terms/PrivacyPolicy';
 import Termsandconditions from './terms/Termsandconditions';
@@ -89,6 +90,7 @@ export default function BaseLayout() {
             <Route exact path={'/'} element={<Home />} />
             <Route exact path={'/about'} element={<About />} />
             <Route exact path={'/portfolio'} element={<Portfolio />} />
+            <Route exact path={'/dheefit'} element={<DheeFit />} />
             <Route exact path={'/PrivacyPolicy'} element={<Terms />} />
             <Route exact path={'/Privacy'} element={<PrivacyPolicy />} />
             <Route exact path={'/GamePrivacyPolicy'} element={<Termsandconditions />} />

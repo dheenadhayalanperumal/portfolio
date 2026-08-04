@@ -55,6 +55,34 @@
   max-width: 60ch;
 }
 
+// ── Featured founder project ───────────────────────────────────────────────
+.featured {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+// Divider that separates the founder project from client/personal work.
+.gridLabel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+
+  span {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ed-muted);
+    white-space: nowrap;
+  }
+
+  i {
+    flex: 1;
+    height: 1px;
+    background: var(--ed-line);
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -70,9 +98,10 @@
   }
 }
 
+// Every card in the grid is the same size. The founder project is the only
+// full-width item, and it sits above the grid rather than inside it.
 .cell {
   @media (min-width: 1100px) {
     grid-column: span 3;
-    &[data-span="wide"] { grid-column: span 6; }
   }
 }
